@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,8 +19,13 @@ public class EmpresaServiceImpl implements EmpresaService {
 
     @Override
     public Page<Empresa> buscar(Integer page, Integer size, String cnpj, String nome, TipoEmpresaEnum tipoEmpresa) {
-        PageRequest pageRequest = PageRequest.of(1, 5);
+        PageRequest pageRequest = PageRequest.of(page, size);
         return empresaRepository.findByCnpjAndNomeAndTipoEmpresa(pageRequest, cnpj, nome, tipoEmpresa);
+    }
+
+    @Override
+    public List<Empresa> buscarMatrizes() {
+        return empresaRepository.findByTipoEmpresa(TipoEmpresaEnum.MATRIZ);
     }
 
     @Override
@@ -52,7 +58,6 @@ public class EmpresaServiceImpl implements EmpresaService {
         empRetorno.setLogradouro(e.getLogradouro());
         empRetorno.setComplemento(e.getComplemento());
         empRetorno.setMatriz(e.getMatriz());
-        empRetorno.setFiliais(e.getFiliais());
 
         return this.salvar(e);
     }

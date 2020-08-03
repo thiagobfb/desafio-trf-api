@@ -77,7 +77,7 @@ public class Empresa implements Serializable {
 
     @Column(name = "estado", nullable = false)
     @NotEmpty(message = "Estado obrigatório")
-    @Length(min = 5, max = 40, message = "O tamanho deve ser entre 5 e 40 caracteres")
+    @Length(min = 2, max = 40, message = "O tamanho deve ser entre 5 e 40 caracteres")
     private String estado;
 
     @Column(name = "bairro", nullable = false)
@@ -100,6 +100,6 @@ public class Empresa implements Serializable {
     private String complemento;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "matriz_id", referencedColumnName = "empresa_id")
+    @JoinColumn(name = "matriz_id", referencedColumnName = "empresa_id", nullable = true)
     private Empresa matriz;
 }
