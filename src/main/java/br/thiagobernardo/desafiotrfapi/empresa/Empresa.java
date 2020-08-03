@@ -102,8 +102,4 @@ public class Empresa implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matriz_id", referencedColumnName = "empresa_id")
     private Empresa matriz;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "matriz")
-    @JsonIgnore
-    private List<Empresa> filiais;
 }
