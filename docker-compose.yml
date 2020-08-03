@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  datatabase:
+    container_name: otimo_empresas
+    image: postgres:12.2
+    environment:
+      POSTGRES_DB: otimo_empresas
+      POSTGRES_USER: cademp
+      POSTGRES_PASSWORD: cademp
+    ports:
+      - "5432:5432"

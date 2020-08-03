@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "4bc1957f-5572-4d8a-bdec-48e01059f73a",
+		"name": "Empresas-TRF",
+		"description": "Desafio TRF\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inserir Empresa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cnpj\": \"15625373000125\",\n    \"nome\": \"Empresa 1 Filial\",\n    \"tipoEmpresa\": \"FILIAL\",\n    \"razaoSocial\": \"Empresa 1 Ltda\",\n    \"contato\": \"Contato 1\",\n    \"email\": \"contato1@mail.com\",\n    \"cep\": \"60224996\",\n    \"estado\": \"RJ\",\n    \"bairro\": \"25 de Agosto\",\n    \"cidade\": \"Duque de Caxias\",\n    \"logradouro\": \"Rua 3, 419\",\n    \"complemento\": null,\n    \"matriz\": {\n        \"id\": 1,\n        \"cnpj\": \"21295642000135\",\n        \"nome\": \"Empresa 1\",\n        \"tipoEmpresa\": \"MATRIZ\",\n        \"razaoSocial\": \"Empresa 1 Ltda\",\n        \"contato\": \"Contato 1\",\n        \"email\": \"contato1@mail.com\",\n        \"cep\": \"25020010\",\n        \"estado\": \"RJ\",\n        \"bairro\": \"25 de Agosto\",\n        \"cidade\": \"Duque de Caxias\",\n        \"logradouro\": \"Rua Tauá, 49\",\n        \"complemento\": \"Apto. 1301\",\n        \"matriz\": null\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empresas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas"
+					]
+				},
+				"description": "Cadastro de Empresas"
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Empresa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 1,\n        \"cnpj\": \"21295642000135\",\n        \"nome\": \"Empresa 1\",\n        \"tipoEmpresa\": \"MATRIZ\",\n        \"razaoSocial\": \"Empresa 1 Ltda\",\n        \"contato\": \"Contato 1\",\n        \"email\": \"contato1@mail.com\",\n        \"cep\": \"25020010\",\n        \"estado\": \"RJ\",\n        \"bairro\": \"25 de Agosto\",\n        \"cidade\": \"Duque de Caxias\",\n        \"logradouro\": \"Rua Tauá, 49\",\n        \"complemento\": \"Apto. 1406\",\n        \"matriz\": null\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/empresas/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Cadastro de Empresas"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Endereço",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/enderecos/:cep",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"enderecos",
+						":cep"
+					],
+					"variable": [
+						{
+							"key": "cep",
+							"value": "25020010"
+						}
+					]
+				},
+				"description": "Busca de endereço por CEP"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Matrizes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/empresas/matrizes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						"matrizes"
+					]
+				},
+				"description": "Endpoint usado pela combobox de matrizes no formulário"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Empresa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/empresas/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "Buscar dados de uma empresa"
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir Empresa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/empresas/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				},
+				"description": "Buscar dados de uma empresa"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Empresaa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/empresas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"empresas"
+					]
+				},
+				"description": "Listar empresas cadstradas"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
