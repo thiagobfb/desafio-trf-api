@@ -1,6 +1,5 @@
 package br.thiagobernardo.desafiotrfapi.empresa;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
-import java.util.Collections;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
 public class EmpresaRepositoryIntegrationTest {
@@ -54,5 +53,23 @@ public class EmpresaRepositoryIntegrationTest {
         Page<Empresa> resultado = empresaRepository.findByCnpjAndNomeAndTipoEmpresa(pageRequest,null, null, null);
 
         assertNotNull(resultado.getContent());
+        assertEquals(resultado.getContent().size(), 3);
+    }
+
+    @Test
+    public void testBuscarPorCnpjNomeTipoEmpresaPesquisaFiliais() {
+        PageRequest pageRequest = PageRequest.of(0, 5);
+        Page<Empresa> resultado = empresaRepository.findByCnpjAndNomeAndTipoEmpresa(pageRequest,null, null, TipoEmpresaEnum.FILIAL);
+
+        assertNotNull(resultado.getContent());
+        assertEquals(resultado.getContent().size(), 2);
+    }
+
+    @Test
+    public void testPesquisarPorTipo() {
+        List<Empresa> resultado = empresaRepository.findByTipoEmpresa(TipoEmpresaEnum.MATRIZ);
+
+        assertNotNull(resultado);
+        assertEquals(resultado.size(), 1);
     }
 }
