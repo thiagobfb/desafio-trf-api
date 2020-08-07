@@ -33,7 +33,7 @@ public class EmpresaRepositoryImpl implements EmpresaRepositoryCustom {
         List<Predicate> predicates = new ArrayList<>();
 
         if (nonNull(cnpj)) {
-            predicates.add(cb.like(iRoot.get("status"), "%" + cnpj + "%"));
+            predicates.add(cb.like(iRoot.get("cnpj"), "%" + cnpj + "%"));
         }
 
         if (nonNull(nome)) {

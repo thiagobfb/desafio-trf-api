@@ -93,7 +93,6 @@ public class Empresa implements Serializable {
     private String logradouro;
 
     @Column(name = "complemento")
-    @Length(min = 5, max = 40, message = "O tamanho deve ser entre 5 e 40 caracteres")
     private String complemento;
 
     @ManyToOne(fetch = FetchType.LAZY)
